@@ -1,24 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import postimg from "../assets/images/post-1.jpg";
+import axios from "axios";
 function BlogCard() {
+  const [loading, setLoading] = useState(false);
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    const loadPost = async () => {
+      const response = await axios.get(
+        "https://jsonplaceholder.typicode.com/posts/"
+      );
+      setPosts(response.data);
+      // setLoading(false);
+    };
+    loadPost();
+  }, []);
+
   return (
     <>
-      <div className="col-xs-12 col-md-4">
-        <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src={postimg} />
-          <Card.Body>
-            <Card.Title>Card Title</Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </Card.Text>
-            <Link to="/blogDetail">Read More</Link>
-          </Card.Body>
-        </Card>
-      </div>
+      {loading ? (
+        <h4>Loading...</h4>
+      ) : (
+        posts.map((item, id) => (
+          <div className="col-xs-12 col-md-4">
+            <Card style={{ width: "18rem" }}>
+              <Card.Img variant="top" src={postimg} />
+              <Card.Body>
+                <Card.Title key={id}>{item.title}</Card.Title>
+                <Card.Text key={id}>{item.body}</Card.Text>
+                <Link to="/blogDetail">Read More</Link>
+              </Card.Body>
+            </Card>
+          </div>
+        ))
+      )}
     </>
   );
 }

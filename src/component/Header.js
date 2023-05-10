@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 function Header() {
   return (
     <>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container">
-          <Link to="/" class="navbar-brand">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <div className="container">
+          <Link to="/" className="navbar-brand">
             <img style={{ width: "100px" }} src={logo} alt="logo"></img>
           </Link>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
@@ -20,30 +20,35 @@ function Header() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
+          <div className="collapse navbar-collapse" id="navbarNav">
             <Nav className="justify-content-end ms-auto" activeKey="/home">
-              <li class="nav-item">
-                <Link class="nav-link" to="/">
+              <li className="nav-item">
+                <Link className="nav-link" to="/">
                   Home
                 </Link>
               </li>
-              <li class="nav-item">
-                <Link class="nav-link" to="/about">
+              <li className="nav-item">
+                <Link className="nav-link" to="/about">
                   About
                 </Link>
               </li>
-              <li class="nav-item">
-                <Link class="nav-link" to="/todo">
+              <li className="nav-item">
+                <Link className="nav-link" to="/jokes">
+                  Jokes
+                </Link>
+              </li>
+              {/* <li className="nav-item">
+                <Link className="nav-link" to="/todo">
                   Todo
                 </Link>
-              </li>
-              <li class="nav-item">
-                <Link class="nav-link" to="/login">
+              </li> */}
+              {/* <li className="nav-item">
+                <Link className="nav-link" to="/login">
                   Login
                 </Link>
-              </li>
+              </li> */}
             </Nav>
           </div>
         </div>

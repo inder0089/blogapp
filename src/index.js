@@ -13,6 +13,7 @@ import Body from "./component/Body";
 import PrivateRoute from "./component/Auth/PrivateRoute";
 import Todo from "./pages/todo/Todo";
 import BlogDetail from "./pages/BlogDetail";
+import Jokes from "./pages/Jokes";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/blogDetail",
         element: <BlogDetail />,
+      },
+      {
+        path: "/jokes",
+        element: <Jokes />,
       },
     ],
   },
