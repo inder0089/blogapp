@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
 import postimg from "../assets/images/post-1.jpg";
 function BlogCard() {
   return (
@@ -14,7 +15,7 @@ function BlogCard() {
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </Card.Text>
-            <Button variant="primary">Read More</Button>
+            <Link to="/blogDetail">Read More</Link>
           </Card.Body>
         </Card>
       </div>

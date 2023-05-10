@@ -8,9 +8,9 @@ function Header() {
     <>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container">
-          <Navbar.Brand to="/" class="navbar-brand">
+          <Link to="/" class="navbar-brand">
             <img style={{ width: "100px" }} src={logo} alt="logo"></img>
-          </Navbar.Brand>
+          </Link>
           <button
             class="navbar-toggler"
             type="button"
@@ -32,6 +32,11 @@ function Header() {
               <li class="nav-item">
                 <Link class="nav-link" to="/about">
                   About
+                </Link>
+              </li>
+              <li class="nav-item">
+                <Link class="nav-link" to="/todo">
+                  Todo
                 </Link>
               </li>
               <li class="nav-item">

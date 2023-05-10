@@ -11,6 +11,8 @@ import About from "./pages/About";
 import Login from "./pages/Login";
 import Body from "./component/Body";
 import PrivateRoute from "./component/Auth/PrivateRoute";
+import Todo from "./pages/todo/Todo";
+import BlogDetail from "./pages/BlogDetail";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,8 +27,16 @@ const router = createBrowserRouter([
         element: <About />,
       },
       {
-        path: "login",
+        path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/todo",
+        element: <Todo />,
+      },
+      {
+        path: "/blogDetail",
+        element: <BlogDetail />,
       },
     ],
   },
