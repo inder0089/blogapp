@@ -19,3 +19,6 @@ a {
 .form-right i {
   font-size: 100px;
 }
+section.block-card .row {
+  row-gap: 40px;
+}

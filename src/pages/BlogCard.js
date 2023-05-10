@@ -25,7 +25,7 @@ function BlogCard() {
       ) : (
         posts.map((item, id) => (
           <div className="col-xs-12 col-md-4">
-            <Card style={{ width: "18rem" }}>
+            <Card>
               <Card.Img variant="top" src={postimg} />
               <Card.Body>
                 <Card.Title key={id}>{item.title}</Card.Title>
