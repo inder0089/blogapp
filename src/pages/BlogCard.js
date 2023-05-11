@@ -23,13 +23,13 @@ function BlogCard() {
       {loading ? (
         <h4>Loading...</h4>
       ) : (
-        posts.map((item, id) => (
-          <div className="col-xs-12 col-md-4">
+        posts.map((item) => (
+          <div key={item.id} className="col-xs-12 col-md-4">
             <Card>
               <Card.Img variant="top" src={postimg} />
               <Card.Body>
-                <Card.Title key={id}>{item.title}</Card.Title>
-                <Card.Text key={id}>{item.body}</Card.Text>
+                <Card.Title>{item.title}</Card.Title>
+                <Card.Text>{item.body}</Card.Text>
                 <Link to="/blogDetail">Read More</Link>
               </Card.Body>
             </Card>
