@@ -1,3 +1,5 @@
+/** @format */
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import React from "react";
@@ -14,6 +16,7 @@ import PrivateRoute from "./component/Auth/PrivateRoute";
 import Todo from "./pages/todo/Todo";
 import BlogDetail from "./pages/BlogDetail";
 import Jokes from "./pages/Jokes";
+import Register from "./pages/Register";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -42,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/jokes",
         element: <Jokes />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
     ],
   },
