@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/images/logo.png";
 function Login() {
+  const [loginFromData, setLoginFormData] = useState({
+    username: "",
+    password: "",
+  });
+
+  const handleLoginFormData = (e) => {
+    const { name: fieldName, value: fieldValue } = e?.target;
+    console.log();
+    setLoginFormData({
+      ...loginFromData,
+      [fieldName]: fieldValue,
+    });
+    console.log(loginFromData);
+  };
   return (
     <>
       <div className="login-page bg-light">
@@ -24,6 +38,9 @@ function Login() {
                               type="text"
                               className="form-control"
                               placeholder="Enter Username"
+                              name="username"
+                              value={loginFromData.username}
+                              onChange={handleLoginFormData}
                             />
                           </div>
                         </div>
@@ -40,11 +57,14 @@ function Login() {
                               type="text"
                               className="form-control"
                               placeholder="Enter Password"
+                              name="password"
+                              value={loginFromData.password}
+                              onChange={handleLoginFormData}
                             />
                           </div>
                         </div>
 
-                        <div className="col-sm-6">
+                        {/* <div className="col-sm-6">
                           <div className="form-check">
                             <input
                               className="form-check-input"
@@ -58,7 +78,7 @@ function Login() {
                               Remember me
                             </label>
                           </div>
-                        </div>
+                        </div> */}
 
                         <div className="col-sm-6">
                           <a href="#" className="float-end text-primary">
