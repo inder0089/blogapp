@@ -22,3 +22,14 @@ a {
 section.block-card .row {
   row-gap: 40px;
 }
+
+
+.shimmer-banner {
+  height: 500px;
+  background: #ccc;
+}
+.shimmer-cart {
+  width: 100%;
+  height: 450px;
+  background: #ccc;
+}

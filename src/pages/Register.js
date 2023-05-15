@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import logo from "../assets/images/logo.png";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   //   const [Username, setUsername] = useState("");
@@ -143,9 +144,9 @@ const Register = () => {
                         </div>
 
                         <div className="col-sm-6">
-                          <a href="#" className="float-end text-primary">
-                            Forgot Password?
-                          </a>
+                          <Link to="/login" className="float-end text-primary">
+                            Login
+                          </Link>
                         </div>
 
                         <div className="col-12">

@@ -1,6 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import banner from "../assets/images/post-1.jpg";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+
 const BlogDetail = () => {
+  const param = useParams();
+
+  // console.log("param", param.id);
+
+  const [post, setPost] = useState(null);
+
+  useEffect(() => {
+    const post = async () => {
+      const response = await axios.get(
+        `https://jsonplaceholder.typicode.com/posts/${param.id}`
+      );
+      setPost(response.data);
+    };
+    post();
+  }, []);
+
   return (
     <>
       <div className="detailblog">
@@ -12,11 +31,8 @@ const BlogDetail = () => {
         </div>
         <div className="blog-content py-4">
           <div className="container">
-            <h1>Heading</h1>
-            <p>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
+            <h1>{post?.title}</h1>
+            <p>{post?.body}</p>
           </div>
         </div>
       </div>

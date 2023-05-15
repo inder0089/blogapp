@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import logo from "../assets/images/logo.png";
+import { Link } from "react-router-dom";
 function Login() {
-  const [loginFromData, setLoginFormData] = useState({
+  const [loginData, setLoginData] = useState({
     username: "",
     password: "",
   });
 
-  const handleLoginFormData = (e) => {
+  const handleLoginData = (e) => {
     const { name: fieldName, value: fieldValue } = e?.target;
-    console.log();
-    setLoginFormData({
-      ...loginFromData,
-      [fieldName]: fieldValue,
-    });
-    console.log(loginFromData);
+    setLoginData({ ...loginData, [fieldName]: fieldValue });
   };
+
+  const loginUser = (e) => {
+    e?.preventDefault();
+    console.log(loginData);
+  };
+
   return (
     <>
       <div className="login-page bg-light">
@@ -25,7 +27,7 @@ function Login() {
                 <div className="row">
                   <div className="col-md-7 pe-0">
                     <div className="form-left h-100 py-5 px-5">
-                      <form action="" className="row g-4">
+                      <form onSubmit={loginUser} className="row g-4">
                         <div className="col-12">
                           <label>
                             Username<span className="text-danger">*</span>
@@ -39,8 +41,8 @@ function Login() {
                               className="form-control"
                               placeholder="Enter Username"
                               name="username"
-                              value={loginFromData.username}
-                              onChange={handleLoginFormData}
+                              value={loginData.username}
+                              onChange={handleLoginData}
                             />
                           </div>
                         </div>
@@ -54,12 +56,12 @@ function Login() {
                               <i className="bi bi-lock-fill"></i>
                             </div>
                             <input
-                              type="text"
+                              type="password"
                               className="form-control"
                               placeholder="Enter Password"
                               name="password"
-                              value={loginFromData.password}
-                              onChange={handleLoginFormData}
+                              value={loginData.password}
+                              onChange={handleLoginData}
                             />
                           </div>
                         </div>
@@ -81,9 +83,20 @@ function Login() {
                         </div> */}
 
                         <div className="col-sm-6">
-                          <a href="#" className="float-end text-primary">
+                          <Link
+                            to="/forgetpassword"
+                            className="float-end text-primary"
+                          >
                             Forgot Password?
-                          </a>
+                          </Link>
+                        </div>
+                        <div className="col-sm-6">
+                          <Link
+                            to="/register"
+                            className="float-end text-primary"
+                          >
+                            Register New User
+                          </Link>
                         </div>
 
                         <div className="col-12">

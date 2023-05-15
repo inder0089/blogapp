@@ -17,10 +17,13 @@ import Todo from "./pages/todo/Todo";
 import BlogDetail from "./pages/BlogDetail";
 import Jokes from "./pages/Jokes";
 import Register from "./pages/Register";
+import ForgetPassword from "./pages/ForgetPassword";
+import ErrorPage from "./pages/ErrorPage";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -39,7 +42,7 @@ const router = createBrowserRouter([
         element: <Todo />,
       },
       {
-        path: "/blogDetail",
+        path: "/blogDetail/:id",
         element: <BlogDetail />,
       },
       {
@@ -49,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/forgetpassword",
+        element: <ForgetPassword />,
       },
     ],
   },

@@ -11,6 +11,7 @@ import {
 import Login from "./pages/Login";
 import About from "./pages/About";
 import PrivateRoute from "./component/Auth/PrivateRoute";
+import Shimmer from "./common/Shimmer";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route element={<Login />} path="/login" />
       </Routes> */}
       <Footer />
+      {/* <Shimmer /> */}
     </>
   );
 }
