@@ -12,22 +12,40 @@ import Login from "./pages/Login";
 import About from "./pages/About";
 import PrivateRoute from "./component/Auth/PrivateRoute";
 import Shimmer from "./common/Shimmer";
+import { useState } from "react";
+import Register from "./pages/Register";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLoggedIn = () => {
+    setIsLoggedIn(true);
+  };
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
   return (
     <>
-      <Header />
-      <Outlet />
+      {isLoggedIn ? (
+        <>
+          <Header handleLogout={handleLogout} />
+          <Outlet />
+          <Footer />
+        </>
+      ) : (
+        <Login handleLoggedIn={handleLoggedIn} />
+      )}
       {/* <Body /> */}
-
-      {/* <Routes>
+      {/* <Header handleLogout={handleLogout} />
+      <Routes>
         <Route element={<PrivateRoute />}>
           <Route element={<Body />} path="/" exact />
           <Route element={<About />} path="/about" exact />
         </Route>
         <Route element={<Login />} path="/login" />
-      </Routes> */}
-      <Footer />
+        <Route element={<Register />} path="/login" />
+      </Routes>
+      <Footer /> */}
       {/* <Shimmer /> */}
     </>
   );

@@ -19,6 +19,7 @@ import Jokes from "./pages/Jokes";
 import Register from "./pages/Register";
 import ForgetPassword from "./pages/ForgetPassword";
 import ErrorPage from "./pages/ErrorPage";
+import AddBlog from "./pages/AddBlog";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -38,8 +39,8 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/todo",
-        element: <Todo />,
+        path: "/addblog",
+        element: <AddBlog />,
       },
       {
         path: "/blogDetail/:id",
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "/forgetpassword",
         element: <ForgetPassword />,
+      },
+      {
+        path: "/todo",
+        element: <Todo />,
       },
     ],
   },

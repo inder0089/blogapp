@@ -1,11 +1,13 @@
-/** @format */
-
 import React from "react";
 
 const Todolist = () => {
   return (
     <>
-      <h1>todo List</h1>
+      <div className="todo">
+        <div className="container">
+          <h1>Todo List</h1>
+        </div>
+      </div>
     </>
   );
 };

@@ -1,38 +1,71 @@
 import React from "react";
+import Dropdown from "react-bootstrap/Dropdown";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import Table from "react-bootstrap/Table";
 const Todo = () => {
   return (
     <>
-      <div className="blog-upload">
+      <div className="todo">
         <div className="container">
-          <h1 className="text-center">Blog Upload</h1>
-          <div className="w-50 m-auto">
-            <div className="mb-3">
-              <label for="title" className="form-label">
-                Title
-              </label>
-              <input type="text" className="form-control" id="title" />
+          <h1>Todo</h1>
+          <div className="row">
+            <div className="col-md-6">
+              <InputGroup className="mb-3">
+                <Form.Control
+                  placeholder="Recipient's username"
+                  aria-label="Recipient's username"
+                  aria-describedby="basic-addon2"
+                />
+                <Button variant="outline-secondary" id="button-addon2">
+                  Add
+                </Button>
+              </InputGroup>
             </div>
-            <div className="mb-3">
-              <label for="exampleFormControlTextarea1" className="form-label">
-                Description
-              </label>
-              <textarea
-                className="form-control"
-                id="exampleFormControlTextarea1"
-                rows="3"
-              ></textarea>
+            <div className="col-md-6">
+              <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  Filter
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  {/* <Dropdown.Item href="#/action-1">Action</Dropdown.Item> */}
+                  <Dropdown.Item href="#/action-2">Completed</Dropdown.Item>
+                  <Dropdown.Item href="#/action-3">Not Completed</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </div>
-            <div className="mb-3">
-              <label for="formFile" className="form-label">
-                Default file input example
-              </label>
-              <input className="form-control" type="file" id="formFile" />
-            </div>
-            <div className="mb-3 text-center">
-              <button type="button" className="btn btn-secondary m-auto">
-                Upload
-              </button>
-            </div>
+          </div>
+          <div className="todo-table">
+            <Table striped bordered hover variant="dark">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Todo Item</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    {["checkbox"].map((type) => (
+                      <div key={`inline-${type}`} className="mb-3">
+                        <Form.Check
+                          name="group1"
+                          type={type}
+                          id={`inline-${type}-1`}
+                        />
+                      </div>
+                    ))}
+                  </td>
+                  <td className="w-75">Mark</td>
+                  <td>
+                    <Button variant="danger">Delete</Button>
+                  </td>
+                </tr>
+              </tbody>
+            </Table>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "../assets/images/logo.png";
-import { Link } from "react-router-dom";
-function Login() {
+import { Link, Navigate } from "react-router-dom";
+function Login(props) {
   const [loginData, setLoginData] = useState({
     username: "",
     password: "",
@@ -17,6 +17,9 @@ function Login() {
     console.log(loginData);
   };
 
+  const loginUs = () => {
+    props.handleLoggedIn();
+  };
   return (
     <>
       <div className="login-page bg-light">
@@ -103,6 +106,7 @@ function Login() {
                           <button
                             type="submit"
                             className="btn btn-primary px-4 float-end mt-4"
+                            onClick={loginUs}
                           >
                             login
                           </button>

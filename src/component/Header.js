@@ -3,7 +3,11 @@ import Nav from "react-bootstrap/Nav";
 import logo from "../assets/images/logo.png";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
-function Header() {
+import { Button } from "react-bootstrap";
+function Header(props) {
+  const logoutUs = () => {
+    props.handleLogout(false);
+  };
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -38,6 +42,11 @@ function Header() {
                 <Link className="nav-link" to="/jokes">
                   Jokes
                 </Link>
+              </li>
+              <li className="nav-item">
+                <Button variant="warning" onClick={logoutUs}>
+                  Logout
+                </Button>
               </li>
               {/* <li className="nav-item">
                 <Link className="nav-link" to="/todo">
