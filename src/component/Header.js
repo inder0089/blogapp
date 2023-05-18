@@ -4,9 +4,10 @@ import logo from "../assets/images/logo.png";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+
 function Header(props) {
   const logoutUs = () => {
-    props.handleLogout(false);
+    props.handleLogout();
   };
   return (
     <>

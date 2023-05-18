@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
-const PrivateRoute = () => {
-  let auth = { token: false };
-  return auth.token ? <Outlet /> : <Navigate to="/login" replace />;
+import Footer from "../Footer";
+import Header from "../Header";
+const PrivateRoute = (props) => {
+  console.log(props);
+  let auth = { token: props.istoken };
+  return auth.token ? (
+    <>
+      <Header handleLogout={props.handleLogout} /> <Outlet /> <Footer />
+    </>
+  ) : (
+    <Navigate to="/login" replace />
+  );
 };
 
 export default PrivateRoute;

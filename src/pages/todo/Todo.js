@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Table from "react-bootstrap/Table";
 const Todo = () => {
+  const [inputItem, setInputItem] = useState("");
+  const [todoList, setTodoList] = useState([]);
+
+  const addTodo = () => {
+    setTodoList([...todoList, inputItem]);
+    setInputItem("");
+  };
   return (
     <>
       <div className="todo">
@@ -14,11 +21,20 @@ const Todo = () => {
             <div className="col-md-6">
               <InputGroup className="mb-3">
                 <Form.Control
-                  placeholder="Recipient's username"
+                  placeholder="Enter Todo item"
                   aria-label="Recipient's username"
                   aria-describedby="basic-addon2"
+                  name="item"
+                  value={inputItem}
+                  onChange={(e) => {
+                    setInputItem(e.target.value);
+                  }}
                 />
-                <Button variant="outline-secondary" id="button-addon2">
+                <Button
+                  onClick={addTodo}
+                  variant="outline-secondary"
+                  id="button-addon2"
+                >
                   Add
                 </Button>
               </InputGroup>
@@ -47,23 +63,27 @@ const Todo = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    {["checkbox"].map((type) => (
-                      <div key={`inline-${type}`} className="mb-3">
-                        <Form.Check
-                          name="group1"
-                          type={type}
-                          id={`inline-${type}-1`}
-                        />
-                      </div>
-                    ))}
-                  </td>
-                  <td className="w-75">Mark</td>
-                  <td>
-                    <Button variant="danger">Delete</Button>
-                  </td>
-                </tr>
+                {todoList.map((name, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>
+                        {["checkbox"].map((type) => (
+                          <div key={`inline-${type}`} className="mb-3">
+                            <Form.Check
+                              name="group1"
+                              type={type}
+                              id={`inline-${type}-1`}
+                            />
+                          </div>
+                        ))}
+                      </td>
+                      <td className="w-75">{name}</td>
+                      <td>
+                        <Button variant="danger">Delete</Button>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </Table>
           </div>
