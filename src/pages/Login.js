@@ -17,8 +17,9 @@ function Login(props) {
     console.log(loginData);
   };
 
-  const loginUs = () => {
+  const loginUs = (props) => {
     props.handleLoggedIn();
+    console.log("login");
   };
   return (
     <>

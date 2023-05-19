@@ -7,7 +7,8 @@ const PrivateRoute = (props) => {
   let auth = { token: props.istoken };
   return auth.token ? (
     <>
-      <Header handleLogout={props.handleLogout} /> <Outlet /> <Footer />
+      <Header handleLogout={props.handleLogout} />
+      <Outlet handleLoggedIn={props.handleLoggedIn} /> <Footer />
     </>
   ) : (
     <Navigate to="/login" replace />
