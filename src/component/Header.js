@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Nav from "react-bootstrap/Nav";
 import logo from "../assets/images/logo.png";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import UserContext from "../utils/UserContext";
 
 function Header(props) {
   const logoutUs = () => {
     props.handleLogout();
   };
+  // const { user } = useContext(UserContext);
+  // const { name, email } = user;
+  // console.log("inder", user);
+
+  const { newUser } = useContext(UserContext);
+  console.log("inder", newUser);
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -29,6 +36,7 @@ function Header(props) {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <Nav className="justify-content-end ms-auto" activeKey="/home">
+              <li>User: {newUser.name}</li>
               <li className="nav-item">
                 <Link className="nav-link" to="/">
                   Home

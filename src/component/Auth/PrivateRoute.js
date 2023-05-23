@@ -5,10 +5,10 @@ import Header from "../Header";
 const PrivateRoute = (props) => {
   console.log(props);
   let auth = { token: props.istoken };
-  return auth.token ? (
+  return auth.token && auth.token ? (
     <>
       <Header handleLogout={props.handleLogout} />
-      <Outlet handleLoggedIn={props.handleLoggedIn} /> <Footer />
+      <Outlet /> <Footer />
     </>
   ) : (
     <Navigate to="/login" replace />

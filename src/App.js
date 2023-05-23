@@ -21,7 +21,10 @@ import Jokes from "./pages/Jokes";
 import Todo from "./pages/todo/Todo";
 import Register from "./pages/Register";
 import ForgetPassword from "./pages/ForgetPassword";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import ErrorPage from "./pages/ErrorPage";
 function App() {
   const [istoken, setIsToken] = useState("asdfghjkl");
   const handleLoggedIn = () => {
@@ -38,25 +41,36 @@ function App() {
   // const handleLogout = () => {
   //   setIsLoggedIn(false);
   // };
+  // const user = useContext(UserContext);
+  const [user, setUser] = useState({
+    name: "inder",
+    email: "inder@gmail.com",
+  });
   return (
     <>
-      <Routes>
-        <Route
-          element={
-            <PrivateRoute istoken={istoken} handleLogout={handleLogout} />
-          }
-        >
-          <Route element={<Body />} path="/" exact />
-          <Route element={<About />} path="/about" />
-          <Route element={<AddBlog />} path="/addblog" />
-          <Route element={<BlogDetail />} path="/blogDetail/:id" />
-          <Route element={<Jokes />} path="/jokes" />
-          <Route element={<Todo />} path="/todo" />
-        </Route>
-        <Route element={<Login />} path="/login" />
-        <Route element={<Register />} path="/login" />
-        <Route element={<ForgetPassword />} path="/login" />
-      </Routes>
+      {/* <UserContext.Provider value={user}> */}
+      <UserContext.Provider value={{ newUser: user }}>
+        <Routes>
+          <Route
+            element={
+              <PrivateRoute istoken={istoken} handleLogout={handleLogout} />
+            }
+          >
+            <Route element={<ErrorPage />} path="*" />
+
+            <Route element={<Body />} path="/" exact />
+            <Route element={<About />} path="/about" />
+            <Route element={<AddBlog />} path="/addblog" />
+            <Route element={<BlogDetail />} path="/blogDetail/:id" />
+            <Route element={<Jokes />} path="/jokes" />
+            <Route element={<Todo />} path="/todo" />
+          </Route>
+
+          <Route element={<Login />} path="/login" />
+          <Route element={<Register />} path="/register" />
+          <Route element={<ForgetPassword />} path="/forgetpassword" />
+        </Routes>
+      </UserContext.Provider>
 
       {/* {isLoggedIn ? (
         <>

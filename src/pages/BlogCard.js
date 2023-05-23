@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import postimg from "../assets/images/post-1.jpg";
 import axios from "axios";
 import Shimmer from "../common/Shimmer";
+import UserContext from "../utils/UserContext";
 function BlogCard() {
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
@@ -20,6 +21,8 @@ function BlogCard() {
     loadPost();
   }, []);
 
+  const { newUser } = useContext(UserContext);
+
   return (
     <>
       {loading ? (
@@ -32,6 +35,7 @@ function BlogCard() {
               <Card.Body>
                 <Card.Title>{item.title}</Card.Title>
                 <Card.Text>{item.body}</Card.Text>
+                <h6>{newUser.email}</h6>
                 <Link to={`/blogDetail/${item.id}`}>Read More</Link>
               </Card.Body>
             </Card>
