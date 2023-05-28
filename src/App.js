@@ -1,3 +1,5 @@
+/** @format */
+
 import "./App.css";
 import Header from "./component/Header";
 import Body from "./component/Body";
@@ -23,13 +25,13 @@ import Register from "./pages/Register";
 import ForgetPassword from "./pages/ForgetPassword";
 import { useContext, useState } from "react";
 import UserContext from "./utils/UserContext";
-import { Provider } from "react-redux";
+// import { Provider } from "react-redux";
 import ErrorPage from "./pages/ErrorPage";
 function App() {
   const [istoken, setIsToken] = useState("asdfghjkl");
-  const handleLoggedIn = () => {
-    setIsToken(true);
-  };
+  // const handleLoggedIn = () => {
+  //   setIsToken(true);
+  // };
   const handleLogout = () => {
     setIsToken(false);
   };
@@ -54,21 +56,20 @@ function App() {
           <Route
             element={
               <PrivateRoute istoken={istoken} handleLogout={handleLogout} />
-            }
-          >
-            <Route element={<ErrorPage />} path="*" />
+            }>
+            <Route element={<ErrorPage />} path='*' />
 
-            <Route element={<Body />} path="/" exact />
-            <Route element={<About />} path="/about" />
-            <Route element={<AddBlog />} path="/addblog" />
-            <Route element={<BlogDetail />} path="/blogDetail/:id" />
-            <Route element={<Jokes />} path="/jokes" />
-            <Route element={<Todo />} path="/todo" />
+            <Route element={<Body />} path='/' exact />
+            <Route element={<About />} path='/about' />
+            <Route element={<AddBlog />} path='/addblog' />
+            <Route element={<BlogDetail />} path='/blogDetail/:id' />
+            <Route element={<Jokes />} path='/jokes' />
+            <Route element={<Todo />} path='/todo' />
           </Route>
 
-          <Route element={<Login />} path="/login" />
-          <Route element={<Register />} path="/register" />
-          <Route element={<ForgetPassword />} path="/forgetpassword" />
+          <Route element={<Login />} path='/login' />
+          <Route element={<Register />} path='/register' />
+          <Route element={<ForgetPassword />} path='/forgetpassword' />
         </Routes>
       </UserContext.Provider>
 
