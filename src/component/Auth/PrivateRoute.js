@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import Footer from "../Footer";
@@ -11,7 +13,7 @@ const PrivateRoute = (props) => {
       <Outlet /> <Footer />
     </>
   ) : (
-    <Navigate to="/login" replace />
+    <Navigate to='/login' replace />
   );
 };
 

@@ -16,25 +16,27 @@ import PrivateRoute from "./component/Auth/PrivateRoute";
 // import Shimmer from "./common/Shimmer";
 // import { useState } from "react";
 // import Register from "./pages/Register";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import AddBlog from "./pages/AddBlog";
 import BlogDetail from "./pages/BlogDetail";
 import Jokes from "./pages/Jokes";
 import Todo from "./pages/todo/Todo";
 import Register from "./pages/Register";
 import ForgetPassword from "./pages/ForgetPassword";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import UserContext from "./utils/UserContext";
 // import { Provider } from "react-redux";
 import ErrorPage from "./pages/ErrorPage";
+import { TodoApi } from "./pages/todo/TodoApi";
 function App() {
-  const [istoken, setIsToken] = useState("asdfghjkl");
+  const [istoken, setIsToken] = useState(false);
   // const handleLoggedIn = () => {
   //   setIsToken(true);
   // };
-  const handleLogout = () => {
-    setIsToken(false);
-  };
+  // const handleLogout = () => {
+  //   setIsToken(false);
+  // };
+  const navigate = useNavigate();
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // const handleLoggedIn = () => {
@@ -48,29 +50,38 @@ function App() {
     name: "inder",
     email: "inder@gmail.com",
   });
+
+  useEffect(() => {
+    const logintoken = JSON.parse(localStorage.getItem("auth"));
+    if (!logintoken?.access_token) {
+      navigate("/login");
+      setIsToken(false);
+    } else {
+      setIsToken(true);
+    }
+  }, []);
+
   return (
     <>
       {/* <UserContext.Provider value={user}> */}
       <UserContext.Provider value={{ newUser: user }}>
-        <Routes>
-          <Route
-            element={
-              <PrivateRoute istoken={istoken} handleLogout={handleLogout} />
-            }>
-            <Route element={<ErrorPage />} path='*' />
+        {istoken && <Header />}
 
-            <Route element={<Body />} path='/' exact />
-            <Route element={<About />} path='/about' />
-            <Route element={<AddBlog />} path='/addblog' />
-            <Route element={<BlogDetail />} path='/blogDetail/:id' />
-            <Route element={<Jokes />} path='/jokes' />
-            <Route element={<Todo />} path='/todo' />
-          </Route>
+        <Routes>
+          <Route element={<ErrorPage />} path='*' />
+          <Route element={<Body />} path='/' exact />
+          <Route element={<About />} path='/about' />
+          <Route element={<AddBlog />} path='/addblog' />
+          <Route element={<BlogDetail />} path='/blogDetail/:id' />
+          <Route element={<Jokes />} path='/jokes' />
+          <Route element={<Todo />} path='/todo' />
+          <Route element={<TodoApi />} path='/todoapi' />
 
           <Route element={<Login />} path='/login' />
           <Route element={<Register />} path='/register' />
           <Route element={<ForgetPassword />} path='/forgetpassword' />
         </Routes>
+        {istoken && <Footer />}
       </UserContext.Provider>
 
       {/* {isLoggedIn ? (
