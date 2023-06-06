@@ -53,6 +53,7 @@ function App() {
 
   useEffect(() => {
     const logintoken = JSON.parse(localStorage.getItem("auth"));
+    console.log("logintoken", logintoken);
     if (!logintoken?.access_token) {
       navigate("/login");
       setIsToken(false);
