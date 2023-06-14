@@ -1,12 +1,27 @@
 /** @format */
 
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Table from "react-bootstrap/Table";
+import privateAPI from "../../api";
 
 export const TodoApi = () => {
+  async function getTodos() {
+    const response = await privateAPI({
+      url: "todos",
+      headers: {
+        method: "GET",
+      },
+    });
+    return response;
+  }
+
+  useEffect(() => {
+    getTodos();
+  }, []);
+
   return (
     <div>
       <div className='todo'>
