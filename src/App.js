@@ -28,6 +28,7 @@ import UserContext from "./utils/UserContext";
 // import { Provider } from "react-redux";
 import ErrorPage from "./pages/ErrorPage";
 import { TodoApi } from "./pages/todo/TodoApi";
+import NewRegister from "./pages/NewRegister";
 function App() {
   const [istoken, setIsToken] = useState(false);
   // const handleLoggedIn = () => {
@@ -68,18 +69,19 @@ function App() {
         {istoken && <Header />}
 
         <Routes>
-          <Route element={<ErrorPage />} path='*' />
-          <Route element={<Body />} path='/' exact />
-          <Route element={<About />} path='/about' />
-          <Route element={<AddBlog />} path='/addblog' />
-          <Route element={<BlogDetail />} path='/blogDetail/:id' />
-          <Route element={<Jokes />} path='/jokes' />
-          <Route element={<Todo />} path='/todo' />
-          <Route element={<TodoApi />} path='/todoapi' />
+          <Route element={<ErrorPage />} path="*" />
+          <Route element={<Body />} path="/" exact />
+          <Route element={<About />} path="/about" />
+          <Route element={<AddBlog />} path="/addblog" />
+          <Route element={<BlogDetail />} path="/blogDetail/:id" />
+          <Route element={<Jokes />} path="/jokes" />
+          <Route element={<Todo />} path="/todo" />
+          <Route element={<TodoApi />} path="/todoapi" />
 
-          <Route element={<Login />} path='/login' />
-          <Route element={<Register />} path='/register' />
-          <Route element={<ForgetPassword />} path='/forgetpassword' />
+          <Route element={<Login />} path="/login" />
+          <Route element={<Register />} path="/register" />
+          <Route element={<ForgetPassword />} path="/forgetpassword" />
+          <Route element={<NewRegister />} path="/newregister" />
         </Routes>
         {istoken && <Footer />}
       </UserContext.Provider>
