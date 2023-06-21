@@ -8,6 +8,7 @@ import Table from "react-bootstrap/Table";
 import privateAPI from "../../api";
 
 export const TodoApi = () => {
+  const [inputText, setInputText] = useState("");
   const [todoList, settodoList] = useState([]);
   async function getTodos() {
     const response = await privateAPI({
@@ -29,7 +30,6 @@ export const TodoApi = () => {
     title: "",
     isCompleted: false,
   };
-  const [inputText, setInputText] = useState("");
 
   const handlechange = (e) => {
     const { name, value } = e.target;
@@ -52,6 +52,18 @@ export const TodoApi = () => {
     setInputText(initialvalue);
   };
   // console.log(todoList);
+
+  const handleCheckbox = (e, iD) => {
+    const checklist = e.target.checked;
+    console.log("handleCheckbox", checklist, iD);
+
+    // const checkedItem = [...todoList];
+
+    // const filtedList = checkedItem.map((item) => {
+    //   return iD === item._id;
+    // });
+    // console.log("filtedList", filtedList);
+  };
 
   return (
     <div>
@@ -104,7 +116,12 @@ export const TodoApi = () => {
                       <tr key={list._id}>
                         <td>
                           <div className="mb-3">
-                            <input type="checkbox" name="group1" />
+                            <input
+                              type="checkbox"
+                              name="group1"
+                              checked={list?.isCompleted}
+                              onClick={(e) => handleCheckbox(e, list._id)}
+                            />
                           </div>
                         </td>
                         <td className="w-75">{list.title}</td>
