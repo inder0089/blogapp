@@ -31,26 +31,14 @@ import { TodoApi } from "./pages/todo/TodoApi";
 import NewRegister from "./pages/NewRegister";
 function App() {
   const [istoken, setIsToken] = useState(false);
-  // const handleLoggedIn = () => {
-  //   setIsToken(true);
-  // };
-  // const handleLogout = () => {
-  //   setIsToken(false);
-  // };
-  const navigate = useNavigate();
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // const handleLoggedIn = () => {
-  //   setIsLoggedIn(true);
-  // };
-  // const handleLogout = () => {
-  //   setIsLoggedIn(false);
-  // };
-  // const user = useContext(UserContext);
-  const [user, setUser] = useState({
-    name: "inder",
-    email: "inder@gmail.com",
-  });
+  const navigate = useNavigate();
+
+  const user = useContext(UserContext);
+  // const [user, setUser] = useState({
+  //   name: "inder",
+  //   email: "inder@gmail.com",
+  // });
 
   useEffect(() => {
     const logintoken = JSON.parse(localStorage.getItem("auth"));
@@ -65,8 +53,8 @@ function App() {
 
   return (
     <>
-      {/* <UserContext.Provider value={user}> */}
-      <UserContext.Provider value={{ newUser: user }}>
+      <UserContext.Provider value={user}>
+        {/* <UserContext.Provider value={{ newUser: user }}> */}
         {istoken && <Header />}
 
         <Routes>

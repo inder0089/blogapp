@@ -21,8 +21,9 @@ function BlogCard() {
     loadPost();
   }, []);
 
-  const { newUser } = useContext(UserContext);
-
+  const newUser = useContext(UserContext);
+  const { name, email } = newUser;
+  // console.log("inderjeet singh2", newUser);
   return (
     <>
       {loading ? (
@@ -35,7 +36,7 @@ function BlogCard() {
               <Card.Body>
                 <Card.Title>{item.title}</Card.Title>
                 <Card.Text>{item.body}</Card.Text>
-                <h6>{newUser.email}</h6>
+                <h6>{newUser.user.email}</h6>
                 <Link to={`/blogDetail/${item.id}`}>Read More</Link>
               </Card.Body>
             </Card>
